@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mask Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+       body {
+    background-image: url("{% static 'images/ai.jpg' %}");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        button {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #video {
+            transition: opacity 0.5s ease;
+        }
+
+        #video.hidden {
+            opacity: 0;
+        }
+
+        #message {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <h1 class="text-center text-4xl font-bold mb-6">Face Mask Live Detection APP</h1>
+        <div class="max-w-[200px]">
+            <p id="message" class="text-center   text-[18px] mb-6"></p>
+        </div>
+      
+        <div class="flex justify-center">
+            <img id="video" width="640" height="480" class="border-4 border-blue-500 rounded-lg shadow-xl hidden" />
+        </div>
+        <div class="flex justify-center mt-4">
+            <button id="startBtn" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-6 rounded-full mx-2 hover:bg-purple-500">Start Video</button>
+            <button id="stopBtn" class="bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 px-6 rounded-full mx-2 hover:bg-orange-500">Stop Video</button>
+        </div>
+    </div>
+    <script src="{% static 'js/mask_detection.js' %}"></script>
+</body>
+</html>
